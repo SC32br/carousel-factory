@@ -1,0 +1,15 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+*.log
+COPY-NOTES.md
+SANITIZE-NOTES.md
+project/INCIDENTS.md
+project/prompts/.history/
+project/.env
+project/.venv/
+project/runs/*
+!project/runs/.gitkeep
+project/secrets/*
+!project/secrets/.gitkeep

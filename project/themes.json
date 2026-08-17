@@ -1,0 +1,45 @@
+{
+  "_комментарий": "Ротация тем по дням недели (0=понедельник … 6=воскресенье). Подставь свои ниши, сегменты и Pinterest-запросы.",
+  "0": {
+    "name": "бьюти / салон",
+    "segment": "мастер салона красоты",
+    "family": "светлый editorial",
+    "queries": ["hair salon aesthetic", "hairstylist aesthetic", "behind the chair aesthetic", "luxury hair salon interior", "beauty macro aesthetic"]
+  },
+  "1": {
+    "name": "продуктивность / стол",
+    "segment": "предприниматель",
+    "family": "POV стол",
+    "queries": ["productivity desk aesthetic", "laptop coffee aesthetic", "quiet luxury desk", "journaling aesthetic", "home office editorial"]
+  },
+  "2": {
+    "name": "еда / кафе",
+    "segment": "локальный бизнес",
+    "family": "макро-деталь",
+    "queries": ["cafe flatlay aesthetic", "coffee editorial photography", "pastry macro aesthetic", "restaurant table styling"]
+  },
+  "3": {
+    "name": "дом / интерьер",
+    "segment": "аудитория lifestyle",
+    "family": "светлый editorial",
+    "queries": ["quiet luxury interior", "moody apartment aesthetic", "editorial home details", "linen bedding aesthetic"]
+  },
+  "4": {
+    "name": "бьюти / детали",
+    "segment": "мастер салона красоты",
+    "family": "тёмный editorial",
+    "queries": ["chrome nails 2026", "jet black nails", "gold jewelry stack aesthetic", "beauty still life editorial"]
+  },
+  "5": {
+    "name": "польза / разбор",
+    "segment": "предприниматель",
+    "family": "тёмный editorial",
+    "queries": ["moody luxury aesthetic", "dark editorial still life", "minimal desk night aesthetic"]
+  },
+  "6": {
+    "name": "лёгкий lifestyle",
+    "segment": "аудитория lifestyle",
+    "family": "POV стол",
+    "queries": ["clean girl aesthetic", "that girl morning routine", "linen outfit detail", "window light still life"]
+  }
+}

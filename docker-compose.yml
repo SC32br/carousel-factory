@@ -1,0 +1,27 @@
+services:
+  bot:
+    build: .
+    env_file: .env
+    environment:
+      CHROME_BIN: /usr/bin/chromium
+    volumes:
+      - ./project:/app
+      - ./project/runs:/app/runs
+      - ./project/secrets:/app/secrets
+      - ./.env:/app/.env:ro
+    restart: unless-stopped
+    command: python -u botd.py
+
+  # Разовый дневной прогон: docker compose --profile daily run --rm daily
+  daily:
+    profiles: ["daily"]
+    build: .
+    env_file: .env
+    environment:
+      CHROME_BIN: /usr/bin/chromium
+    volumes:
+      - ./project:/app
+      - ./project/runs:/app/runs
+      - ./project/secrets:/app/secrets
+      - ./.env:/app/.env:ro
+    command: python -u run_daily.py run

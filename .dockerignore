@@ -1,0 +1,8 @@
+.env
+.git
+**/__pycache__
+**/.venv
+**/runs
+**/secrets
+**/*.pyc
+SANITIZE-NOTES.md

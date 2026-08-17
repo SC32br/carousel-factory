@@ -1,0 +1,11 @@
+.env
+.venv/
+secrets/*
+!secrets/.gitkeep
+runs/*
+!runs/.gitkeep
+__pycache__/
+*.pyc
+INCIDENTS.md
+prompts/.history/
+*.log
