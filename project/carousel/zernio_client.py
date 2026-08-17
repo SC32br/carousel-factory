@@ -3,8 +3,7 @@
 Схема из docs.zernio.com: POST /media/presign → PUT файла по uploadUrl →
 publicUrl в mediaItems / customMedia → POST /posts.
 
-Площадки режут медиа по-разному. 9 слайдов 4:5 - это карусель Instagram
-(до 10 смешанных image/video), альбом Telegram, мультифото Facebook/Threads.
+Instagram-карусель и Threads проверены в бою. 9 слайдов 4:5 также уходят альбомом Telegram и мультифото Facebook.
 TikTok берёт фотосет ИЛИ одно видео. YouTube - одно видео. Pinterest - один пин.
 MAX и VK в Zernio нет.
 """
