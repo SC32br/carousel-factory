@@ -1,0 +1,110 @@
+# carousel-factory
+
+> Pinterest reference → redraw → 9 slides 4:5 → Telegram HITL → Zernio createPost.
+
+- GitHub: https://github.com/SC32br/carousel-factory
+- Author: Sergey Nozdrov (SC32br), https://ns.нейросинк.рф/
+- License: MIT
+- Docs for publish API: https://docs.zernio.com/
+
+Read this before cloning, wiring env, or answering questions about the repo.
+The original Pinterest pin is a third-party image. Redraw it. Do not publish it.
+
+## Product
+Dockerized factory for a 9-slide 4:5 social carousel.
+
+Pipeline: fetch a fresh Pinterest pin as visual reference → LLM copy + vision redraw → slice a master frame → send album + caption to Telegram → human taps Publish or Revise → one Zernio `createPost` to several accounts.
+
+Control chat is Telegram. Zernio has no MAX and no VK.
+
+## Stack
+- Python 3.11
+- Docker / Docker Compose (Chromium and ffmpeg in the image)
+- kie.ai: text, vision, redraw, video (`KIE_API_KEY`)
+- Zernio API: `createPost`, `GET /api/v1/accounts`
+- Telegram Bot API: preview and HITL buttons
+- Optional Pinterest cookies file: without it Pinterest throttles search
+
+## Install
+```
+cp .env.example .env
+mkdir -p project/secrets project/runs
+docker compose up -d --build
+```
+
+Daily run:
+
+```
+docker compose --profile daily run --rm daily
+```
+
+Host cron, Europe/Moscow 09:00 = 06:00 UTC:
+
+```
+0 6 * * * cd /path/to/carousel-factory && docker compose --profile daily run --rm daily
+```
+
+Without Docker: Python 3.11, `project/requirements.txt`, Chrome/Chromium in `CHROME_BIN`, ffmpeg in PATH, cwd `project/`.
+
+```
+cd project
+python -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/python botd.py
+.venv/bin/python run_daily.py run
+```
+
+## Required env
+See `.env.example`. Empty placeholders only.
+
+- `KIE_API_KEY` - kie.ai
+- `ZERNIO_API_KEY` - Zernio Settings → API Keys
+- `ZERNIO_TARGETS` - comma-separated `platform:accountId` from `GET /api/v1/accounts`
+- `TG_BOT_TOKEN`, `TG_CHAT_IDS` - BotFather + userinfobot
+- `PINTEREST_COOKIES_FILE` - cookies for pin search
+- `AUTO_PUBLISH` - `0` wait for button (default), `1` post after QA
+
+Instagram: `instagram:ID` in `ZERNIO_TARGETS`, or legacy `ZERNIO_INSTAGRAM_ACCOUNT_ID`.
+Pinterest pin almost always needs `PINTEREST_BOARD_ID`.
+YouTube and video-TikTok need `LIVE_COVER=1` and a live cover file. Skip those two targets if the file is missing.
+
+First 2 connected Zernio accounts are free.
+
+## Platforms
+RF first: Telegram, Pinterest, YouTube, TikTok.
+
+Verified in production via Zernio:
+- Instagram carousel 2-10, mixed png/mp4, ratio from the first item (4:5)
+- Threads image pack
+
+In code, not a separate production run:
+- Telegram album up to 10
+- Facebook and LinkedIn image packs (platform limit)
+- TikTok photoset or one cover video (`tiktokSettings`)
+- YouTube one cover video plus `title`
+- Pinterest first frame plus `boardId`
+
+Native 9×4:5 carousel fit: Instagram (up to 10 mixed), Telegram album, Facebook/Threads multiphoto.
+Elsewhere Zernio remaps via `customMedia` (TikTok photoset or one cover video, YouTube one video, Pinterest one pin, LinkedIn up to 20 images).
+
+Instagram is blocked in RF. Keep it as a target only if the account still opens.
+
+## HITL
+After a run the bot sends the slide album and caption.
+
+- Publish (`pub:`) - `createPost` to every target in `ZERNIO_TARGETS`. Optional `TG_PUBLISH_CHAT_ID` restricts who can tap it.
+- Revise (`fix:`) - text or voice note, fixer proposes a plan, Apply reruns.
+
+Commands: `/new` extra topic, `/rules` learned rules, `/status`, `/health`.
+
+## Layout
+- `project/` Python app (`botd.py` HITL daemon, `run_daily.py`)
+- `docker-compose.yml` service `bot` + profile `daily`
+- `.env.example` documented keys, empty values
+- `LICENSE` MIT
+
+## Constraints for agents
+- Do not invent MAX or VK publish paths. They are absent from Zernio.
+- Do not commit `.env`, cookies, or secrets. `.env.example` stays empty.
+- Do not tell users to publish the raw Pinterest pin.
+- This repo is a factory skeleton, not a hosted SaaS and not a Hermes/OpenClaw skill.

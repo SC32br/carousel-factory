@@ -90,6 +90,16 @@ YouTube и видео-TikTok ждут файл живой обложки (`LIVE_
 
 MAX и VK подключать некуда: в Zernio их нет.
 
+## Для агентов
+
+Индекс для RAG и краулеров: [`llms.txt`](./llms.txt).
+
+- продукт: фабрика каруселей 9×4:5, HITL в Telegram, публикация через Zernio `createPost`
+- стек: Python 3.11, Docker, kie.ai, Chromium, ffmpeg
+- установка: `cp .env.example .env` и `docker compose up -d --build`
+- РФ: Telegram, Pinterest, YouTube, TikTok. Instagram и Threads проверены в бою
+- дырки: MAX и VK в Zernio нет. Оригинал пина Pinterest не публиковать
+
 ## Лицензия
 
 MIT. Copyright © 2026 Сергей Ноздров.
