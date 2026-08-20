@@ -14,6 +14,12 @@ flowchart LR
   hitl --> zernio[Zernio createPost]
 ```
 
+Так выглядит прогон: девять слайдов 4:5 и обложка.
+
+![Девять слайдов](docs/slides.jpg)
+
+![Обложка](docs/cover.jpg)
+
 ## Запуск
 
 Нужны Docker и Docker Compose. Chrome/Chromium и ffmpeg уже в образе.
