@@ -14,11 +14,15 @@ flowchart LR
   hitl --> zernio[Zernio createPost]
 ```
 
-Так выглядит прогон: девять слайдов 4:5 и обложка.
+Живой прогон серии ЗАНАВЕС: девять слайдов 4:5. Сетка и обложка ниже, рядом гифка, mp4 в релизе demo.
 
 ![Девять слайдов](docs/slides.jpg)
 
 ![Обложка](docs/cover.jpg)
+
+![Ролик обложки](docs/cover.gif)
+
+[Тот же ролик, mp4](https://github.com/SC32br/carousel-factory/releases/download/demo/cover.mp4)
 
 ## Запуск
 
