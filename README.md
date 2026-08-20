@@ -18,9 +18,9 @@ flowchart LR
 
 ![Девять слайдов](docs/slides.jpg)
 
-![Обложка](docs/cover.jpg)
+<img src="docs/cover.jpg" width="380" alt="Обложка">
 
-![Ролик обложки](docs/cover.gif)
+<img src="docs/cover.gif" width="380" alt="Ролик обложки">
 
 [Тот же ролик, mp4](https://github.com/SC32br/carousel-factory/releases/download/demo/cover.mp4)
 
