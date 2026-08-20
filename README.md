@@ -14,11 +14,9 @@ flowchart LR
   hitl --> zernio[Zernio createPost]
 ```
 
-Живой прогон серии ЗАНАВЕС: девять слайдов 4:5. Сетка и обложка ниже, рядом гифка, mp4 в релизе demo.
+Живой прогон серии ЗАНАВЕС: девять слайдов 4:5. Сетка ниже, рядом гифка, mp4 в релизе demo.
 
 ![Девять слайдов](docs/slides.jpg)
-
-<img src="docs/cover.jpg" width="380" alt="Обложка">
 
 <img src="docs/cover.gif" width="380" alt="Ролик обложки">
 
